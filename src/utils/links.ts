@@ -1,4 +1,4 @@
-export interface NavLink {
+export type NavLink = {
   href: string;
   label: string;
 };

@@ -1,11 +1,14 @@
-
+import { RegisterForm } from './ui/RegisterForm';
 
 
 
 export default function RegisterPage() {
+  
   return (
-    <div>
-      <h1>Hello Register Page</h1>
+    <div className="flex flex-col justify-center items-center h-screen">
+
+      <RegisterForm />
+      
     </div>
   );
 }
