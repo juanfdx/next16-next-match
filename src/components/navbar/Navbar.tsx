@@ -1,0 +1,24 @@
+// components
+import { Logo } from './Logo'
+import { NavLinks } from './NavLinks'
+import { LinkButton } from '../ui/LinkButton'
+
+
+
+export const Navbar = () => {
+  
+  return (
+    <nav className='bg-linear-to-r from-purple-500 to-pink-500'>
+      <div className='container mx-auto flex flex-col sm:flex-row sm:justify-between sm:items-center flex-wrap gap-4 px-7 py-3 '>
+        <Logo />
+
+        <NavLinks />
+
+        <div className='flex justify-center gap-2'>
+          <LinkButton href='/auth/login' label='Login' />
+          <LinkButton href='/auth/register' label='Register' />
+        </div>
+      </div>
+    </nav>
+  )
+}
