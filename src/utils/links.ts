@@ -9,3 +9,10 @@ export const navLinks: NavLink[] = [
   { href: '/lists', label: 'lists' },
   { href: '/messages', label: 'messages' },
 ];
+
+
+export const menuLinks: NavLink[] = [
+  { href: '/', label: 'home' },
+  { href: '/profile', label: 'profile' },
+
+]

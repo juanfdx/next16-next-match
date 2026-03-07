@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 // dependencies
 import z from 'zod';
@@ -19,12 +18,10 @@ type FormData = z.infer<typeof registerSchema>;
 
 export const RegisterForm = () => {
 
-  const [isPending, setIsPending] = useState(false);
-
   const { 
     register, 
     handleSubmit, 
-    formState: { errors, isSubmitSuccessful }, 
+    formState: { errors, isSubmitSuccessful, isSubmitting }, 
     setError, 
     reset 
   } = useForm<FormData>({
@@ -32,27 +29,23 @@ export const RegisterForm = () => {
       mode: "onTouched",
   });
   
+
   const onSubmit = async (data: FormData) => {
-        setIsPending(true);
 
     try {
       const response = await registerUser(data);
 
       if (!response.success) {
-        console.log(`Error: ${response.error}`);
-        setError('email', { message: response.error })
-        setIsPending(false)
+        console.error(`Error: ${response.error}`);
+        setError('email', { message: response.error }) // to show all errors on email field
         return
       }
       
       // success
-      setIsPending(false);
       reset();
-      
-      
+         
     } catch (error) {
-      console.log(error);
-      setIsPending(false)
+      console.error(error);
       setError('email', { message: "Something went wrong" }) 
     }
   }
@@ -139,9 +132,9 @@ export const RegisterForm = () => {
           <Button 
             type="submit" 
             className="w-full h-10 mt-5 text-md bg-linear-to-r from-purple-500 to-pink-500 rounded-lg" 
-            isDisabled={isPending}
+            isDisabled={isSubmitting}
           >
-            {isPending ? 'Logging in...' : 'Log in'}
+            {isSubmitting ? 'Logging in...' : 'Log in'}
           </Button>
           
           {/* Links */}

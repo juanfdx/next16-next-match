@@ -1,9 +1,9 @@
 'use server';
 
+import { registerSchema, type RegisterSchema } from '@/utils/schemas';
+import type { Result } from '@/utils/types';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
-import { registerSchema, type RegisterSchema } from '@/utils/schemas';
-import { Result } from '@/utils/types';
 
 
 
@@ -11,6 +11,7 @@ import { Result } from '@/utils/types';
 export async function registerUser(
   data: RegisterSchema
 ): Promise<Result<{ message: string }>> {
+  
   // 1️⃣ Validate inputs
   const validated = registerSchema.safeParse(data);
 

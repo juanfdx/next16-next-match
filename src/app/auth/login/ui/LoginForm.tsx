@@ -1,40 +1,54 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 // dependencies
-import z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 // utils
-import { loginSchema } from '@/utils/schemas';
+import { type LoginSchema, loginSchema } from '@/utils/schemas';
 // components
 import { Button, Form, Input, Label } from '@heroui/react';
+import { loginWithCredentials } from '@/actions/auth/login-with-credentials';
 
-/* Infer Type from Schema */
-type FormData = z.infer<typeof loginSchema>;
 
 
 
 export const LoginForm = () => {
 
-  const [isPending, setIsPending] = useState(false);
+  const router = useRouter();
+
   const { 
     register, 
     handleSubmit, 
-    formState: { errors }, 
+    formState: { errors, isSubmitting }, 
     setError, 
     reset 
-  } = useForm<FormData>({
+  } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     mode: "onTouched",
   });
 
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: LoginSchema) => {
     
-    // setIsPending(true);
-    console.log(data);
+    try {
+      const response = await loginWithCredentials(data);
+
+      if (!response.success) {
+        console.error(`Error: ${response.error}`);
+        setError('email', { message: response.error })
+        return;
+      }
+
+      // success
+      reset();
+      router.push('/');
+
+    } catch (error) {
+      console.error(error);
+      setError('email', { message: "Something went wrong" }) 
+    }
   }
 
   
@@ -86,9 +100,9 @@ export const LoginForm = () => {
       <Button 
         type="submit" 
         className="w-full h-10 mt-5 text-md bg-linear-to-r from-purple-500 to-pink-500 rounded-lg" 
-        isDisabled={isPending}
+        isDisabled={isSubmitting}
       >
-        {isPending ? 'Logging in...' : 'Log in'}
+        {isSubmitting ? 'Logging in...' : 'Log in'}
       </Button>
       
       {/* Links */}
