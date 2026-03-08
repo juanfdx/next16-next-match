@@ -5,7 +5,7 @@ export type NavLink = {
 
 
 export const navLinks: NavLink[] = [
-  { href: '/matches', label: 'matches' },
+  { href: '/members', label: 'members' },
   { href: '/lists', label: 'lists' },
   { href: '/messages', label: 'messages' },
 ];
@@ -14,5 +14,6 @@ export const navLinks: NavLink[] = [
 export const menuLinks: NavLink[] = [
   { href: '/', label: 'home' },
   { href: '/profile', label: 'profile' },
+  { href: '/admin', label: 'admin' },
 
 ]

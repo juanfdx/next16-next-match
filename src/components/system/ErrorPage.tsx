@@ -18,7 +18,7 @@ export function ErrorPage({
   
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-9xl font-bold tracking-tight text-primary">
+      <h1 className="text-9xl font-bold tracking-tight bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
         {statusCode}
       </h1>
 
@@ -32,7 +32,7 @@ export function ErrorPage({
 
       <Link
         href={linkHref}
-        className="mt-6 inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-primary/90"
+        className="mt-6 inline-flex items-center h-10 px-5 text-sm font-medium text-white bg-linear-to-r from-purple-500 to-pink-500 rounded-lg"
       >
         {linkText}
       </Link>

@@ -42,7 +42,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return {
           id: user.id,
           email: user.email,
-          role: user.role
+          role: user.role,
+          image: user.image
         }
       },
     }),
@@ -63,6 +64,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // We 'persist' the ID from the database into the encrypted JWT
         token.id = user.id as string;
         token.role = user.role as string;
+        token.image = user.image as string | null;
       };
       return token;
     },
@@ -72,6 +74,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // We take the ID we saved in the JWT and put it in the Session
         session.user.id = token.id as string;
         session.user.role = token.role as string;
+        session.user.image = token.image as string | null;
       };
       return session;
     }

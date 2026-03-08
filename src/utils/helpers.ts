@@ -1,30 +1,29 @@
-// type ImageType = "user" | "property" | "product" | "blog";
-type ImageType = "user" | "property";
+import { differenceInYears } from 'date-fns'
+
 
 /*==================================================
-  Get Safe Image
+  Calculate Age
 ==================================================*/
-export const getSafeImageSrc = (
-  src?: string | null | undefined,
-  type: ImageType = "user" // default keeps backward compatibility
-) => {
-  const fallbacks = {
-    user: "/images/placeholders/avatar.webp",
-    property: "/images/placeholders/no-image.webp",
-  };
+export function calculateAge(birthday: Date | null) {
+  // if null
+  if (!birthday) return 0;
 
-  if (!src) return fallbacks[type];
-
-  // absolute URL
-  if (src.startsWith("http://") || src.startsWith("https://")) {
-    return src;
+  const today = new Date();
+  const birthDate = new Date(birthday);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
   }
+  return age;
+}
 
-  // already root-relative
-  if (src.startsWith("/")) {
-    return src;
-  }
-
-  // invalid string like "9.jpg"
-  return fallbacks[type];
-};
+/*==================================================
+  Calculate Age with date-fns
+==================================================*/
+export const calculateAgeWithDateFns = (birthday: Date | null) => {
+  if (!birthday) return 0;
+  
+  const age = differenceInYears(new Date(), birthday);
+  return age;
+}

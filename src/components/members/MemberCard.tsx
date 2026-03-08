@@ -1,0 +1,33 @@
+import Image from 'next/image'
+import Link from 'next/link'
+// utils
+import type { Member } from '@/utils/types'
+import { calculateAge } from '@/utils/helpers'
+
+type Props = {
+  member: Member
+}
+
+
+export const MemberCard = ({ member }: Props) => {
+
+  return (
+    <Link href={`/members/${member.id}`} className='relative flex flex-col border rounded-xl overflow-hidden'>
+      <div className='overflow-hidden'>
+        <Image 
+          src={member.image || '/images/user.png'} 
+          alt={member.name || 'member avatar'} 
+          width={100} 
+          height={100} 
+          className='w-full h-full object-cover rounded-t-xl transition-transform duration-500 hover:scale-105' 
+        />
+      </div>
+      <div className='w-full px-2 py-1 rounded-b-xl bg-linear-to-r from-purple-500 to-pink-500'>
+        <h2 className='leading-5 font-medium text-white'>
+          {member.name || 'No name'}, {calculateAge(member.dateOfBirth)}
+        </h2>
+        <p className='leading-5 text-white text-sm'>{member.city || 'No city'}</p>
+      </div>
+    </Link>
+  )
+}

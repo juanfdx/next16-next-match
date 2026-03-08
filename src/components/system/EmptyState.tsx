@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LinkButton } from '../ui/LinkButton';
 // import { Button } from "@/components/ui/button";
 
 interface EmptyStateProps {
@@ -26,10 +27,9 @@ export function EmptyState({
       </p>
 
       {actionLabel && (
-        // <Button asChild className="mt-6 capitalize" size="lg">
-        //   <Link href={actionHref}>{actionLabel}</Link>
-        // </Button>
-        <div></div>
+        <div className='mt-5'>
+          <LinkButton href={actionHref} label={actionLabel} />
+        </div>
       )}
     </div>
   );

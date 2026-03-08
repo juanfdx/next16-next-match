@@ -134,7 +134,7 @@ export const RegisterForm = () => {
             className="w-full h-10 mt-5 text-md bg-linear-to-r from-purple-500 to-pink-500 rounded-lg" 
             isDisabled={isSubmitting}
           >
-            {isSubmitting ? 'Logging in...' : 'Log in'}
+            {isSubmitting ? 'Registering...' : 'Register'}
           </Button>
           
           {/* Links */}

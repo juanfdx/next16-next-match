@@ -1,6 +1,22 @@
 
 
 /* ==================================================
+  Member
+================================================== */
+export type Member = {
+  id: string
+  name: string | null
+  username: string | null
+  image: string | null
+  gender: string | null
+  dateOfBirth: Date | null
+  description: string | null
+  city: string | null
+  country: string | null
+  createdAt: Date
+}
+
+/* ==================================================
   Result - data can be any type
 ================================================== */
 export type Result<T> =

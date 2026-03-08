@@ -20,17 +20,42 @@ enum Role {
   user
 }
 
+enum Gender {
+  male
+  female
+  other
+}
+
+
 
 model User {
   id            String     @id @default(uuid())
-  firstName     String?
-  lastName      String?
-  username      String?
+  name          String?
+  username      String?    @unique
   email         String     @unique
   emailVerified DateTime?
   password      String
   image         String?
+  gender        Gender?
+  dateOfBirth   DateTime?
+  description   String?
+  city          String?
+  country       String?
   role          Role       @default(user)
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
+  lastActive    DateTime?  // new field to store the last active date
+
+  // Photos
+  photos        Photo[]
+}
+
+
+model Photo {
+  id            String     @id @default(uuid()) 
+  url           String
+  publicId      String?
+
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
 }
