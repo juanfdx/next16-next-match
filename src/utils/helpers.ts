@@ -1,4 +1,5 @@
 import { differenceInYears } from 'date-fns'
+import { NavLink } from './links';
 
 
 /*==================================================
@@ -27,3 +28,13 @@ export const calculateAgeWithDateFns = (birthday: Date | null) => {
   const age = differenceInYears(new Date(), birthday);
   return age;
 }
+
+
+/*==================================================
+  Generate links
+==================================================*/
+export const generateProfileLinks = (memberId: string): NavLink[] => [
+  { href: `/members/${memberId}/profile`, label: 'profile' },
+  { href: `/members/${memberId}/photos`, label: 'photos' },
+  { href: `/members/${memberId}/chat`, label: 'chat' },
+]

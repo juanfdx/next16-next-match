@@ -12,7 +12,7 @@ type Props = {
 export const MemberCard = ({ member }: Props) => {
 
   return (
-    <Link href={`/members/${member.id}`} className='relative flex flex-col border rounded-xl overflow-hidden'>
+    <Link href={`/members/${member.id}/profile`} className='relative flex flex-col border rounded-xl overflow-hidden'>
       <div className='overflow-hidden'>
         <Image 
           src={member.image || '/images/user.png'} 
