@@ -1,18 +1,22 @@
+'use client';
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import { menuLinks } from '@/utils/links'
+import type { NavLink } from '@/utils/links';
 
 type Props = {
   isAdminUser: boolean
+  links: NavLink[]
+  size?: 'sm' | 'md' | 'lg'
 }
 
-export const MenuLinks = ({ isAdminUser }: Props) => {
+export const MenuLinks = ({ isAdminUser, links, size = 'md' }: Props) => {
 
   const pathname = usePathname();
 
   return (
     <>
-      {menuLinks.map((link) => {
+      {links.map((link) => {
         // Hide all admin routes for non-admin users
         if (link.href.startsWith('/admin') && !isAdminUser) return null
         const isActive = pathname === link.href
@@ -21,7 +25,7 @@ export const MenuLinks = ({ isAdminUser }: Props) => {
           <Link
             key={link.href}
             href={link.href}
-            className={`px-2 py-1 capitalize rounded-lg hover:bg-gray-100 ${isActive ? 'font-semibold' : ''}`}
+            className={`${ size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base'} px-2 py-1 capitalize rounded-lg hover:bg-gray-100 ${isActive ? 'font-semibold' : ''}`}
           >
             {link.label}
           </Link>

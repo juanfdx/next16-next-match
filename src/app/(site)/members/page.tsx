@@ -12,6 +12,7 @@ export default async function MembersPage() {
   if (!response.success) {
     return (
       <EmptyState
+        title="Request Failed"
         description={response.error ?? "Unable to load members"}
         actionLabel="Back home"
       />
@@ -31,12 +32,10 @@ export default async function MembersPage() {
 
   
   return (
-    <div >
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {members.map((member) => (
-          <MemberCard key={member.id} member={member} />
-        ))}
-      </div>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      {members.map((member) => (
+        <MemberCard key={member.id} member={member} />
+      ))}
     </div>
   );
 }

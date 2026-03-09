@@ -20,6 +20,7 @@ export const MemberCard = ({ member }: Props) => {
           width={100} 
           height={100} 
           className='w-full h-full object-cover rounded-t-xl transition-transform duration-500 hover:scale-105' 
+          priority
         />
       </div>
       <div className='w-full px-2 py-1 rounded-b-xl bg-linear-to-r from-purple-500 to-pink-500'>

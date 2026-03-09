@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+// utils
+import { menuLinks } from '@/utils/links';
 // components
 import { LogoutLink } from './LogoutLink';
 import { IoMenu } from 'react-icons/io5';
@@ -64,7 +66,7 @@ export const Dropdown = ({ isAdminUser, isLoggedIn, userImage }: Props) => {
           </>
         ) : (    
           <>
-            <MenuLinks isAdminUser={isAdminUser} />
+            <MenuLinks isAdminUser={isAdminUser} links={menuLinks} />
             <div className='border-b my-1'></div>
             <LogoutLink />
           </>

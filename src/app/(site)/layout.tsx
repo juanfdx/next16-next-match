@@ -12,7 +12,7 @@ export default function SiteLayout({
   return (
     <>
       <Navbar />
-      <main className='container mx-auto px-7 py-10'>{children}</main> 
+      <main className='max-w-350 mx-auto px-7 py-10'>{children}</main> 
     </>
   );
 }
