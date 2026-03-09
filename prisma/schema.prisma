@@ -48,6 +48,10 @@ model User {
 
   // Photos
   photos        Photo[]
+
+  // Likes
+  sourceLikes   Like[]   @relation("sourceLikes")
+  targetLikes   Like[]   @relation("targetLikes")
 }
 
 
@@ -58,4 +62,18 @@ model Photo {
 
   user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
+}
+
+
+model Like { 
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+
+  sourceUserId  String
+  sourceMember  User @relation("sourceLikes", fields: [sourceUserId], references: [id], onDelete: Cascade)
+
+  targetUserId  String
+  targetMember  User @relation("targetLikes", fields: [targetUserId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceUserId, targetUserId])
 }

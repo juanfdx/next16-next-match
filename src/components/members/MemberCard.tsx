@@ -3,16 +3,22 @@ import Link from 'next/link'
 // utils
 import type { Member } from '@/utils/types'
 import { calculateAge } from '@/utils/helpers'
+import { LikeButton } from '../ui/LikeButton'
 
 type Props = {
   member: Member
+  likeIds: string[]
 }
 
 
-export const MemberCard = ({ member }: Props) => {
+export const MemberCard = ({ member, likeIds }: Props) => {
 
+  const isLiked = likeIds.includes(member.id);
+
+  
   return (
     <Link href={`/members/${member.id}/profile`} className='relative flex flex-col border rounded-xl overflow-hidden'>
+      {/* avatar */}
       <div className='overflow-hidden'>
         <Image 
           src={member.image || '/images/user.png'} 
@@ -23,6 +29,11 @@ export const MemberCard = ({ member }: Props) => {
           priority
         />
       </div>
+
+      {/* like button */}
+      <LikeButton targetId={member.id} isLiked={isLiked} />
+
+      {/* info */}
       <div className='w-full px-2 py-1 rounded-b-xl bg-linear-to-r from-purple-500 to-pink-500'>
         <h2 className='leading-5 font-medium text-white'>
           {member.name || 'No name'}, {calculateAge(member.dateOfBirth)}
