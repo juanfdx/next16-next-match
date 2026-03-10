@@ -36,12 +36,9 @@ export default async function PhotosPage({ params }: Props) {
         Photos
       </h1>
       
-      {/* separator */}
-      <div className='border-b '></div>
-      
       {/* info */}
       <div className='p-4'>
-        <p>{member.name}</p>
+        <p className='text-black'>{member.description}</p>
       </div>
       
     </div>

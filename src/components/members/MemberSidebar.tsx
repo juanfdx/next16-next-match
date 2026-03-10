@@ -30,12 +30,12 @@ export const MemberSidebar = ({ member, profileLinks }: Props) => {
       </div>
       {/* member short info */}
       <div className="text-center mt-4">
-        <p className="text-xl font-semibold">{member.name || 'No name'}, {calculateAge(member.dateOfBirth)}</p>
+        <p className="text-xl text-black font-semibold">{member.name || 'No name'}, {calculateAge(member.dateOfBirth)}</p>
         <p className="text-sm text-gray-600">{member.city || 'No city'}, {member.country || 'No country'}</p>
       </div>
 
       {/* separator */}
-      <div className='border-b my-5'></div>
+      <div className='border-b border-gray-200 my-5'></div>
 
       {/* profile links */}
       <div className='flex flex-col'>

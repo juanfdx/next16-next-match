@@ -7,7 +7,7 @@ type Props = {
 };
 
 
-export const UserIcon = async ({ userImage }: Props) => {
+export const UserIcon = ({ userImage }: Props) => {
 
   return (
     <>

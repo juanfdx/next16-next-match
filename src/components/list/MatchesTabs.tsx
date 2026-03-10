@@ -1,21 +1,17 @@
 'use client';
 
-import { likeTabs } from '@/utils/tabs'
-import { Member } from '@/utils/types'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+// utils
+import { likeTabs } from '@/utils/tabs'
+// components
 import { Button } from '../ui/Button';
 
 
-type Props = {
-  members: Member[]
-  likedIds: string[]
-}
 
+export const MatchesTabs = () => {
 
-export const MatchesTabs = ({ members, likedIds }: Props) => {
-
-  const [activeTab, setActiveTab] = useState("sent");
+  const [activeTab, setActiveTab] = useState('source');
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -34,7 +30,7 @@ export const MatchesTabs = ({ members, likedIds }: Props) => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col sm:flex-row gap-2 ">
+      <div className="flex flex-col sm:flex-row gap-2">
         {likeTabs.map((tab) => {
           const active = activeTab === tab.id;
 

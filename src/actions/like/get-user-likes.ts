@@ -1,3 +1,5 @@
+'use server';
+
 import { prisma } from '@/lib/prisma';
 import { auth } from '../../../auth';
 import { Result } from '@/utils/types';

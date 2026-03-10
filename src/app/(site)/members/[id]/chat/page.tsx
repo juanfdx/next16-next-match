@@ -35,12 +35,9 @@ export default async function ChatPage({ params }: Props) {
         Chat
       </h1>
       
-      {/* separator */}
-      <div className='border-b '></div>
-      
       {/* info */}
       <div className='p-4'>
-        <p>{member.description}</p>
+        <p className='text-black'>{member.description}</p>
       </div>
       
     </div>

@@ -25,7 +25,7 @@ export const MenuLinks = ({ isAdminUser, links, size = 'md' }: Props) => {
           <Link
             key={link.href}
             href={link.href}
-            className={`${ size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base'} px-2 py-1 capitalize rounded-lg hover:bg-gray-100 ${isActive ? 'font-semibold' : ''}`}
+            className={`${ size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base'} text-black px-2 py-1 capitalize rounded-lg hover:bg-gray-100 ${isActive ? 'font-semibold' : ''}`}
           >
             {link.label}
           </Link>
