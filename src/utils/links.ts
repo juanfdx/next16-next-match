@@ -20,6 +20,6 @@ export const menuLinks: NavLink[] = [
 
 export const profileLinks: NavLink[] = [
   { href: '/profile', label: 'profile' },
-  { href: '/photos', label: 'photos' },
-  { href: '/chat', label: 'chat' },
+  { href: '/profile/edit', label: 'edit profile' },
+  { href: '/profile/update-photos', label: 'update photos' },
 ]

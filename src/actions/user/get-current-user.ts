@@ -6,7 +6,7 @@ import type { Member, Result } from '@/utils/types';
 
 
 
-export const getUserById = async (userId: string): Promise<Result<Member>> => {
+export const getCurrentUser = async (): Promise<Result<Member>> => {
 
   // 1️⃣ Prevent unauthorized users
   const session = await auth();
@@ -23,12 +23,13 @@ export const getUserById = async (userId: string): Promise<Result<Member>> => {
     // 2️⃣ Get user
     const user = await prisma.user.findUnique({
       where: {
-        id: userId,
+        id: session.user.id,
       },
       select: {
         id: true,
         name: true,
         username: true,
+        email: true,
         image: true,
         gender: true,
         dateOfBirth: true,

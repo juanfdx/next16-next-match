@@ -56,34 +56,25 @@ export const updatePasswordSchema = z.object({
 
 
 /*==================================================
-  Profile Schema 
+  Profile Schema - nullish to work with react hook form
 ==================================================*/
 export const userSchema = z.object({
-  firstName: z
-    .string()
-    .min(2, {
-      message: 'First name must be at least 2 characters.',
-    })
-    .max(50, {
-      message: 'First name must be less than 100 characters.',
-    }),
-  lastName: z
-    .string()
-    .min(2, {
-      message: 'Last name must be at least 2 characters.',
-    })
-    .max(50, {
-      message: 'Last name must be less than 100 characters.',
-    }),
-  username: z
-    .string()
-    .min(2, {
-      message: 'Username must be at least 2 characters.',
-    })
-    .max(50, {
-      message: 'Username must be less than 100 characters.',
-    }),
+  name: z.string().nullish(),
+  username: z.string().nullish(),
+  email: z
+    .email({ message: 'Invalid email address' })
+    .transform((val) => val.trim().toLowerCase())
+    .nullish(),
+  image: z.string().nullish(),
+  gender: z.enum(["male", "female", "other"]).default("male").nullish(),
+  dateOfBirth: z.date().nullish(),
+  description: z.string().nullish(),
+  city: z.string().nullish(),
+  country: z.string().nullish(),
 });
+
+// Type inference
+export type UserSchema = z.infer<typeof userSchema>;
 
 
 /*==================================================

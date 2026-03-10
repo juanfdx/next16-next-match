@@ -1,4 +1,4 @@
-
+type Gender = 'male' | 'female' | 'other';
 
 /* ==================================================
   Member
@@ -7,8 +7,9 @@ export type Member = {
   id: string
   name: string | null
   username: string | null
+  email: string | null
   image: string | null
-  gender: string | null
+  gender: Gender
   dateOfBirth: Date | null
   description: string | null
   city: string | null

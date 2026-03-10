@@ -1,20 +1,17 @@
 // actions
-import { getUserById } from '@/actions/user/get-user-by-id';
+import { getCurrentUser } from '@/actions/user/get-current-user';
+import { ProfileCard } from '@/components/members/ProfileCard';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
-
-type Props = {
-  params: {
-    id: string;
-  };
-};
+import { calculateAge } from '@/utils/helpers';
+import Image from 'next/image';
 
 
-export default async function MemberChatPage({ params }: Props) {
+
+export default async function ProfilePage() {
+
+  const response = await getCurrentUser();
   
-  const { id } = await params;
-  const response = await getUserById(id);
-
   if (!response.success) {
     return (
       <EmptyState
@@ -25,21 +22,18 @@ export default async function MemberChatPage({ params }: Props) {
       />
     );
   }
-
-  const member = response.data;
+  
+  const user = response.data;
 
 
   return (
     <div>
       <h1 className='text-xl font-semibold text-center text-white uppercase py-2 bg-linear-to-r from-purple-500 to-pink-500'>
-        Chat
+        Profile
       </h1>
       
       {/* info */}
-      <div className='p-4'>
-        <p className='text-black'>{member.description}</p>
-      </div>
-      
+      <ProfileCard user={user} />
     </div>
   );
 }

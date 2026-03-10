@@ -36,7 +36,7 @@ model User {
   emailVerified DateTime?
   password      String
   image         String?
-  gender        Gender?
+  gender        Gender     @default(male)
   dateOfBirth   DateTime?
   description   String?
   city          String?

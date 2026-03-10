@@ -18,13 +18,13 @@ export const MemberSidebar = ({ member, profileLinks }: Props) => {
   return (
     <aside className="md:col-span-1 p-5 bg-white shadow-md border border-gray-100 rounded-xl">
       {/* avatar */}
-      <div className="w-50 h-50 mx-auto overflow-hidden rounded-full mt-1">
+      <div className="w-50 h-50 mx-auto overflow-hidden rounded-full border-2 border-gray-200 mt-1">
         <Image 
           src={member.image || '/images/user.png'} 
           alt={member.name || 'member avatar'} 
           width={100} 
           height={100} 
-          className='w-full h-full object-cover' 
+          className='w-full h-full object-cover ' 
           priority
         />
       </div>
@@ -43,7 +43,7 @@ export const MemberSidebar = ({ member, profileLinks }: Props) => {
       </div>
 
       {/* go back */}
-      <div className='mt-4'>
+      <div className='mt-14'>
         <LinkButton href='/members' label='Go Back' variant='solid' />
       </div> 
     </aside>

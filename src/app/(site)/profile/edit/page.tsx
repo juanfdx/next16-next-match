@@ -1,20 +1,15 @@
 // actions
-import { getUserById } from '@/actions/user/get-user-by-id';
+import { getCurrentUser } from '@/actions/user/get-current-user';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
-
-type Props = {
-  params: {
-    id: string;
-  };
-};
+import { ProfileForm } from './ui/ProfileForm';
 
 
-export default async function MemberChatPage({ params }: Props) {
+
+export default async function EditProfilePage() {
   
-  const { id } = await params;
-  const response = await getUserById(id);
-
+  const response = await getCurrentUser();
+  
   if (!response.success) {
     return (
       <EmptyState
@@ -25,19 +20,19 @@ export default async function MemberChatPage({ params }: Props) {
       />
     );
   }
-
-  const member = response.data;
+  
+  const user = response.data;
 
 
   return (
     <div>
       <h1 className='text-xl font-semibold text-center text-white uppercase py-2 bg-linear-to-r from-purple-500 to-pink-500'>
-        Chat
+        Edit Profile
       </h1>
       
       {/* info */}
       <div className='p-4'>
-        <p className='text-black'>{member.description}</p>
+        <ProfileForm user={user} />
       </div>
       
     </div>

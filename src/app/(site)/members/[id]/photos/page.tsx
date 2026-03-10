@@ -1,5 +1,5 @@
 // actions
-import { getUserById } from '@/actions/user/get-user';
+import { getUserById } from '@/actions/user/get-user-by-id';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
 
@@ -11,7 +11,7 @@ type Props = {
 
 
 
-export default async function PhotosPage({ params }: Props) {
+export default async function MemberPhotosPage({ params }: Props) {
 
   const { id } = await params;
   const response = await getUserById(id);

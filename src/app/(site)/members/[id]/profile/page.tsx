@@ -1,7 +1,8 @@
 // actions
-import { getUserById } from '@/actions/user/get-user';
+import { getUserById } from '@/actions/user/get-user-by-id';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
+import { ProfileCard } from '@/components/members/ProfileCard';
 
 type Props = {
   params: {
@@ -10,7 +11,7 @@ type Props = {
 };
 
 
-export default async function ProfilePage({ params }: Props) {
+export default async function MemberProfilePage({ params }: Props) {
 
   const { id } = await params;
   const response = await getUserById(id);
@@ -36,9 +37,7 @@ export default async function ProfilePage({ params }: Props) {
       </h1>
       
       {/* info */}
-      <div className='p-4'>
-        <p className='text-black'>{member.description}</p>
-      </div>
+      <ProfileCard user={member} />
       
     </div>
   );

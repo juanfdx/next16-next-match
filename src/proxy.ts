@@ -8,7 +8,7 @@ export default auth((req) => {
   const userRole = req.auth?.user?.role;
 
   // define routes
-  const protectedRoutes = ["/members", "/lists", "/messages"];
+  const protectedRoutes = ["/members", "/lists", "/messages", "/profile"];
 
   // check routes
   const isAuthRoute = nextUrl.pathname.startsWith("/auth");

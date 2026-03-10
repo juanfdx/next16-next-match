@@ -1,5 +1,7 @@
 import { differenceInYears } from 'date-fns'
 import { NavLink } from './links';
+import { Member } from './types';
+import { UserSchema } from './schemas';
 
 
 /*==================================================
@@ -38,3 +40,5 @@ export const generateProfileLinks = (memberId: string): NavLink[] => [
   { href: `/members/${memberId}/photos`, label: 'photos' },
   { href: `/members/${memberId}/chat`, label: 'chat' },
 ]
+
+

@@ -1,6 +1,6 @@
 import { generateProfileLinks } from '@/utils/helpers';
 // actions
-import { getUserById } from '@/actions/user/get-user';
+import { getUserById } from '@/actions/user/get-user-by-id';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
 import { MemberSidebar } from '@/components/members/MemberSidebar';
@@ -29,13 +29,13 @@ export default async function MemberLayout({
   }
 
   const member = response.data;
-  const profileLinks = generateProfileLinks(id);
+  const memberProfileLinks = generateProfileLinks(id);
 
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-5">
   
-      <MemberSidebar member={member} profileLinks={profileLinks} />
+      <MemberSidebar member={member} profileLinks={memberProfileLinks} />
 
       <main className="md:col-span-2 bg-white shadow-md rounded-xl overflow-hidden">
         {children}
