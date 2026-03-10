@@ -16,30 +16,32 @@ type Props = {
 export const MemberSidebar = ({ member, profileLinks }: Props) => {
 
   return (
-    <aside className="md:col-span-1 p-5 bg-white shadow-md border border-gray-100 rounded-xl">
+    <aside className="flex flex-col justify-between md:col-span-1 p-5 bg-white shadow-md border border-gray-100 rounded-xl">
       {/* avatar */}
-      <div className="w-50 h-50 mx-auto overflow-hidden rounded-full border-2 border-gray-200 mt-1">
-        <Image 
-          src={member.image || '/images/user.png'} 
-          alt={member.name || 'member avatar'} 
-          width={100} 
-          height={100} 
-          className='w-full h-full object-cover ' 
-          priority
-        />
-      </div>
-      {/* member short info */}
-      <div className="text-center mt-4">
-        <p className="text-xl text-black font-semibold">{member.name || 'No name'}, {calculateAge(member.dateOfBirth)}</p>
-        <p className="text-sm text-gray-600">{member.city || 'No city'}, {member.country || 'No country'}</p>
-      </div>
+      <div>
+        <div className="w-50 h-50 mx-auto overflow-hidden rounded-full border-2 border-gray-200 mt-1">
+          <Image 
+            src={member.image || '/images/user.png'} 
+            alt={member.name || 'member avatar'} 
+            width={100} 
+            height={100} 
+            className='w-full h-full object-cover ' 
+            priority
+          />
+        </div>
+        {/* member short info */}
+        <div className="text-center mt-4">
+          <p className="text-xl text-black font-semibold">{member.name || 'No name'}, {calculateAge(member.dateOfBirth)}</p>
+          <p className="text-sm text-gray-600">{member.city || 'No city'}, {member.country || 'No country'}</p>
+        </div>
 
-      {/* separator */}
-      <div className='border-b border-gray-200 my-5'></div>
+        {/* separator */}
+        <div className='border-b border-gray-200 my-5'></div>
 
-      {/* profile links */}
-      <div className='flex flex-col'>
-        <MenuLinks isAdminUser={false} links={profileLinks} size='lg'  />
+        {/* profile links */}
+        <div className='flex flex-col'>
+          <MenuLinks isAdminUser={false} links={profileLinks} size='lg'  />
+        </div>
       </div>
 
       {/* go back */}

@@ -38,7 +38,6 @@ export const ProfileForm = ({ user }: Props) => {
         return;
       }
   
-      console.log(data);
       
     } catch (error) {
       console.error(error);
@@ -186,7 +185,7 @@ export const ProfileForm = ({ user }: Props) => {
       {/* Submit */}
       <Button 
         type="submit" 
-        className="w-full h-10 mt-5 text-md bg-linear-to-r from-purple-500 to-pink-500 rounded-lg" 
+        className="w-full h-10 mt-8 text-md bg-linear-to-r from-purple-500 to-pink-500 rounded-lg" 
         isDisabled={isSubmitting}
       >
         {isSubmitting ? 'Updating...' : 'Update'}
