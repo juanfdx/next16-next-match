@@ -1,3 +1,4 @@
+import { MatchesTabs } from '@/components/list/MatchesTabs';
 
 
 
@@ -5,7 +6,7 @@
 export default function ListsPage() {
   return (
     <div>
-      <h1>Hello Lists Page</h1>
+      <MatchesTabs members={[]} likedIds={[]} />
     </div>
   );
 }

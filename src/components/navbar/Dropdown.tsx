@@ -53,7 +53,7 @@ export const Dropdown = ({ isAdminUser, isLoggedIn, userImage }: Props) => {
 
       {/* dropdown */}
       <div 
-        className={`absolute w-40 mt-2 px-4  py-3 flex flex-col gap-1 text-black bg-white rounded-lg border border-gray-300 z-10 ${open ? 'block' : 'hidden'}`}
+        className={`absolute right-0 w-40 mt-2 px-4  py-3 flex flex-col gap-1 text-black bg-white rounded-lg border border-gray-300 z-10 ${open ? 'block' : 'hidden'}`}
       >
         {!isLoggedIn ? (
           <>
