@@ -67,7 +67,7 @@ export const userSchema = z.object({
     .nullish(),
   image: z.string().nullish(),
   gender: z.enum(["male", "female", "other"]).default("male").nullish(),
-  dateOfBirth: z.date().nullish(),
+  dateOfBirth: z.string().nullish(),
   description: z.string().nullish(),
   city: z.string().nullish(),
   country: z.string().nullish(),

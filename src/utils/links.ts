@@ -21,5 +21,5 @@ export const menuLinks: NavLink[] = [
 export const profileLinks: NavLink[] = [
   { href: '/profile', label: 'profile' },
   { href: '/profile/edit', label: 'edit profile' },
-  { href: '/profile/update-photos', label: 'update photos' },
+  { href: '/profile/photos', label: 'update photos' },
 ]

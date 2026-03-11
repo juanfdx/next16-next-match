@@ -2,3 +2,7 @@
 @import "@heroui/styles";
 
 
+/* to use custom icon <FaRegCalendar /> on date picker, occult default */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
