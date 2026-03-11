@@ -1,14 +1,14 @@
 import Image from 'next/image'
+import type { Profile } from '@/utils/types'
 // components
 import { MenuLinks } from '../navbar/MenuLinks'
 import { LinkButton } from '../ui/LinkButton'
 // utils
 import { calculateAge } from '@/utils/helpers'
-import { Member } from '@/utils/types'
 import { NavLink } from '@/utils/links'
 
 type Props = {
-  member: Member
+  member: Profile
   profileLinks: NavLink[]
 }
 

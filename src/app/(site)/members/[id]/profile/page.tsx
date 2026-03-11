@@ -1,5 +1,6 @@
 // actions
 import { getUserById } from '@/actions/user/get-user-by-id';
+import type { Profile } from '@/utils/types';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
 import { ProfileCard } from '@/components/members/ProfileCard';
@@ -27,7 +28,7 @@ export default async function MemberProfilePage({ params }: Props) {
     );
   }
 
-  const member = response.data;
+  const member = response.data as Profile;
 
 
   return (

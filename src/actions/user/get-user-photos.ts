@@ -7,7 +7,7 @@ import { Photo } from '@/generated/prisma/client';
 
 
 
-export const getUserPhotos = async (): Promise<Result<{ photos: Photo[] | null }>> => {
+export const getUserPhotos = async (): Promise<Result<{ photos: Photo[] }>> => {
   
   // 1️⃣ Prevent unauthorized users
   const session = await auth();

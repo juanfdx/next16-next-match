@@ -1,10 +1,9 @@
+import type { Profile } from '@/utils/types';
 // actions
 import { getCurrentUser } from '@/actions/user/get-current-user';
 import { ProfileCard } from '@/components/members/ProfileCard';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
-import { calculateAge } from '@/utils/helpers';
-import Image from 'next/image';
 
 
 
@@ -23,7 +22,7 @@ export default async function ProfilePage() {
     );
   }
   
-  const user = response.data;
+  const user = response.data as Profile;
 
 
   return (

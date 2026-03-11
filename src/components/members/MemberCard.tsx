@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 // utils
-import type { Member } from '@/utils/types'
+import type { Profile } from '@/utils/types'
 import { calculateAge } from '@/utils/helpers'
 import { LikeButton } from '../ui/LikeButton'
 
 type Props = {
-  member: Member
+  member: Profile
   likeIds: string[]
 }
 

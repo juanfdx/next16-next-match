@@ -1,7 +1,9 @@
 // actions
-import { getUserById } from '@/actions/user/get-user-by-id';
+import { getUserPhotos } from '@/actions/user/get-user-photos';
 // components
 import { EmptyState } from '@/components/system/EmptyState';
+import { Photo } from '@/generated/prisma/client';
+import Image from 'next/image';
 
 type Props = {
   params: {
@@ -14,7 +16,7 @@ type Props = {
 export default async function MemberPhotosPage({ params }: Props) {
 
   const { id } = await params;
-  const response = await getUserById(id);
+  const response = await getUserPhotos();
 
   if (!response.success) {
     return (
@@ -26,8 +28,19 @@ export default async function MemberPhotosPage({ params }: Props) {
       />
     );
   }
-
-  const member = response.data;
+    
+  // const { photos } = response.data;
+  const photos = [] as Photo[];
+  
+  if (photos.length === 0) {
+    return (
+      <EmptyState
+        description="This user has no photos"
+        actionLabel="Back to Members"
+        actionHref="/members"
+      />
+    );
+  }
 
 
   return (
@@ -37,8 +50,19 @@ export default async function MemberPhotosPage({ params }: Props) {
       </h1>
       
       {/* info */}
-      <div className='p-4'>
-        <p className='text-black'>{member.description}</p>
+      <div className='p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2'>
+        {photos.map((photo) => (
+          <div key={photo.id} className='overflow-hidden rounded-2xl border-2 border-gray-200' >
+            <Image 
+              src={photo.url}
+              alt={photo.url}
+              width={100}
+              height={100} 
+              className='w-full h-full object-cover' 
+              priority
+            />
+          </div>
+        ))}
       </div>
       
     </div>

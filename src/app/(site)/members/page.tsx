@@ -4,6 +4,7 @@ import { getUsers } from '@/actions/user/get-users';
 // components
 import { MemberCard } from '@/components/members/MemberCard';
 import { EmptyState } from '@/components/system/EmptyState';
+import { Profile } from '@/utils/types';
 
 
 
@@ -24,7 +25,7 @@ export default async function MembersPage() {
     );
   }
 
-  const members = response.data;
+  const members = response.data as Profile[];
 
   if (members.length === 0) {
     return (

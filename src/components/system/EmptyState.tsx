@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { LinkButton } from '../ui/LinkButton';
-// import { Button } from "@/components/ui/button";
 
 interface EmptyStateProps {
   title?: string;
@@ -18,11 +16,11 @@ export function EmptyState({
   
   return (
     <div className="flex flex-col items-center justify-center text-center py-16">
-      <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+      <h2 className="text-2xl font-semibold text-black">
         {title}
       </h2>
 
-      <p className="mt-2 max-w-md text-sm text-gray-500 dark:text-gray-400">
+      <p className="mt-2 max-w-md text-sm text-gray-500">
         {description}
       </p>
 

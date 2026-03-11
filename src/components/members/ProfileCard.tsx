@@ -1,10 +1,10 @@
 import Image from 'next/image'
 // utils
+import type { Profile } from '@/utils/types'
 import { calculateAge } from '@/utils/helpers'
-import { Member } from '@/utils/types'
 
 type Props = {
-  user: Member
+  user: Profile
 }
 
 

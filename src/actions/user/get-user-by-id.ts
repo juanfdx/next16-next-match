@@ -2,11 +2,11 @@
 
 import { prisma } from '@/lib/prisma';
 import { auth } from '../../../auth';
-import type { Member, Result } from '@/utils/types';
+import type { Profile, Result } from '@/utils/types';
 
 
 
-export const getUserById = async (userId: string): Promise<Result<Member>> => {
+export const getUserById = async (userId: string): Promise<Result<Profile>> => {
 
   // 1️⃣ Prevent unauthorized users
   const session = await auth();
